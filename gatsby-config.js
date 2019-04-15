@@ -1,4 +1,7 @@
 module.exports = {
+  mapping: {
+    'MarkdownRemark.frontmatter.author': 'AuthorsYaml.name'
+  },
   siteMetadata: {
     title: `Gatsby Starter Blog`,
     author: `Kyle Mathews`,
@@ -19,10 +22,18 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        path: `${__dirname}/content/`,
+        name: `content`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         path: `${__dirname}/content/assets`,
         name: `assets`,
       },
     },
+    `gatsby-transformer-yaml`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {

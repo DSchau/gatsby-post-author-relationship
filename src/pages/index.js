@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 
+import Author from '../components/author'
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -32,6 +33,7 @@ class BlogIndex extends React.Component {
                   {title}
                 </Link>
               </h3>
+              <Author {...node.frontmatter.author} />
               <small>{node.frontmatter.date}</small>
               <p
                 dangerouslySetInnerHTML={{
@@ -63,6 +65,10 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
+            author {
+              name
+              bio
+            }
             date(formatString: "MMMM DD, YYYY")
             title
             description
